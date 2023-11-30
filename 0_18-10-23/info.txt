@@ -1,0 +1,14 @@
+    INSTALAR EXTENSIONES
+
+
+JavaScript (ES6) code
+EsLint
+Tabnine AI
+Better Comments
+
+
+    COMO ESCRIBIR JS
+
+Dos formas, dentro del head, o al final del body. Se recomienda dentro del head.
+
+<script src=""></script>

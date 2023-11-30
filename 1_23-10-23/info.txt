@@ -1,0 +1,96 @@
+    VINCULAR ARCHIVO JS EN HTML
+
+<script src="./js/main.js"></script>        
+
+
+    VARIABLE
+nos permite guardar un dato en el programa
+
+se compone de 3 partes importantes 
+
+
+1- nombre
+2- valor = tipo de dato
+3- direccion de memoria = memoria ram
+
+
+    REGLAS DE LAS VARIABLES
+
+
+todas las variables inician con una letra y en camelCase
+
+son keysensitive = miVariable NO es lo mismo que mivariable
+
+const en mayusculas y kebab
+
+
+    DECLARAR VARIABLES 
+
+var nombre = "Santino"; viejo, scope global
+let nombre = "Santino"; new, scope local
+const nombre = "Santino"; new, 
+
+
+    TIPOS DE DATOS
+
+numeros sin comillas
+palabras con comillas
+
+
+    DIFERENCIA LET CONST
+
+let = podemos variar 55 veces la variables
+const = no puede variar el dato, dato unico
+
+    DECLARAR VARIABLES
+
+let miNombre;
+
+
+    INICIALIZAR VARIABLES
+
+miNombre = "blablabla";
+
+
+    TIPOS DE DATOS
+
+string = cadenas de texto 
+
+let nombre = "blablabla"; SIEMPRE COMILLASSSSS
+
+///
+
+number = numeros
+
+let edad = 30; SIN COMILLASSSSS
+
+los decimales se escriben con .
+
+///
+
+boolean = true or false
+
+let boolean = true;
+
+///
+
+null = especifica ausencia intencional
+
+let datpo = null;
+
+///
+
+undefined = representa la falta de un valor asignado
+
+let datoDos = undefined;
+
+    CONCATENACION
+
+let textoA = "coder";
+let textoB = "house";
+
+let frase = textoA + textoB;
+
+
+    PROMPT
+
