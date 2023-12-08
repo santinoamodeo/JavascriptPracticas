@@ -140,7 +140,7 @@ console.log(copia);
 
 //indexOf = nos dice el indice del elemento, en que lugar se encuentra
 
-let frutas = ["CANDELORO", "banana", "naranja", "kiwi"];
+let frutas = ["123", "banana", "naranja", "kiwi"];
 
 let indice = frutas.indexOf("kiwi");
 console.log("el indice de la fruta es: " + indice);
