@@ -1,60 +1,198 @@
-//programacion sincronica
+//siempre hemos hecho programacion sincronica
+//es la ejecucion de las operaciones en orden secuencial,
+//una despues de la otra, es de tipo bloqueante. SI hay un error
+//el programa frena y deja de ejecutarse
 
-//es la ejecucion de las ejecuciones dentro de un probrama en orden
-//SECUENCIAL, una desp de la otra, es de tipo
-//BLOQUEANTE, por lo que, si hay algun error,
-//la ejecucion frena y deja de funcionar
-
-// console.log("inicio de operacion")
+// console.log("Inicio de operacion")
 
 // function operacionSincronica(){
-//     for (let i = 0; i < 3; i++)
-//     console.log("paso " + (i + 1))
+//     for(let i = 0; i < 3; i++){
+//         console.log("Paso" + (i + 1));      
+//     }
 // }
 
-// operacionSincronica()
-// console.log("fin de operacion")
+// operacionSincronica();
+// console.log("Fin de prueba")
+
+ ////////////////
+
+ //provramacion asincrna
+ //las oepraciones que ejecuta el programa NO son bloqueantes al 
+ //hilo principal de la ejecucion, nos permite que se ejecuten unas
+ //mientras se esperan a otras
+
+ //setTimeout
+
+ //funcion que utilizamos para programar la ejecucuinb de una funcion
+ //despues de un tiempo determinado
+
+ //setTimeout(function, tiempo en ms)
+
+//  console.log("Inicio de programa")
+
+//  setTimeout(function(){
+//     console.log("Operacion Asincronica")
+//  }, 2000)
+
+//  console.log("Fin de programa")
+
+ 
+
+ ///////////
+
+ // como cambiar palabras
+
+//  function cambiarContenido(){
+//     document.getElementById("miElemento").innerHTML = "Soy desarrollador Web";
+//  }
+
+//  function cambiarContenido2(){
+//     document.getElementById("miElemento").innerHTML = "De la tierra del Sol y del buen vino"
+//  }
+
+//  console.log("Iniciar programa")
+
+//  setTimeout(cambiarContenido, 3000)
+//  setTimeout(cambiarContenido2, 5000)
+
+//  console.log("Fin de programa")
 
 
-///////////////
-//programacion asincrona
+/////
+// for(let letra of "Hola chicos"){
+//     setTimeout(()=>{
+//         console.log(letra)
+//     },2000)
+// }
 
-//las operaciones que ejecuta no son 
-//bloqueanesm al hilo principal de la ejecucion
-//nos permite que mas operaciones continuen
-//mientras esperamos que algo suceda
+// const mensaje = "Emiliano"
+// const elementoDos = document.getElementById("elemento");
+// let indice = 0;
 
 
-/////////////////
+//mostrando cada una de las letra pero dentro del dom
 
-//setTimeout
+// function mostrarLetra(){
+//     elementoDos.textContent += mensaje[i];
+//     indice++;
 
-//funcion con fin de programar la ejecucion desp de
-//un tiempo
+//     if(indice < mensaje.length){
+//         setTimeout(mostrarLetra, 1000)
+//     }
+// }
 
-//setTimeout(function, tiemp en MILISEGUNDOS)
-
-// console.log("inicio de programa")
-
-// setTimeout(function(){
-//     console.log("operacion asincotrnica")
-// }, 2000)
-
-// console.log('finn de programa')
+// setTimeout(mostrarLetra, 100)
 
 
 //////
-//how to change word
+//setInterval
+//ejecuta repetidamente una funcion o bloque de codigo, a intervalos
+//especificos
 
-function changeContentd(){
-    document.getElementById("miElemento").innerHTML = 
-    "Soy desarrollador web"
+//setInterval(function, intervalo en ms)
+
+// let tiempoRestante = 10;
+
+// function actualizarTemporizador(){
+//     const temperizadorElemento = document.getElementById('temporizador');
+    //mostrar el tiempo restante en HTML
+
+    // temperizadorElemento.textContent = "tiempo restante: "+tiempoRestante;
+
+    // tiempoRestante--;
+
+    //cuando llegue a 0, el temporizador frena
+
+//     if(tiempoRestante < 0){
+//         clearInterval(intervaloID);
+//         temperizadorElemento.textContent = "TIEMPO TERMINADO"
+//     }
+// }
+
+// const intervaloID = setInterval(actualizarTemporizador, 1000)
+//clear interval => detiene la ejecucion de un intervalo, previamente
+//establecido
+
+
+let segundos= 0;
+let minutos = 0;
+let intervaloId;
+
+
+function actualizarCronometro(){
+    segundos++;
+
+    if(segundos === 60){
+        segundos = 0;
+        minutos++;
+    }
+    
+    const cronometroElemento = document.getElementById("cronometro");
+    cronometroElemento.textContent = `${minutos}:${segundos <10 ? '0' : ''} ${segundos}`;
+    
 }
 
-console.log("iniciar programa")
+function inciarCronometro(){
+    intervaloId = setInterval(actualizarCronometro, 1000);
+}
 
-setTimeout(changeContentd, 3000)
+function detenerCronometro(){
+    clearInterval(intervaloId);
+}
 
-console.log("fin")
+function reiniciarCronometro(){
+    segundos = 0
+    minutos = 0
+    const cronometroElemento = document.getElementById("cronometro")
+    cronometroElemento.textContent = "0:00"
+}
 
 
+detenerCronometro();
+
+
+///////
+//promesas (y no sobre el bidet)
+
+//promesas => objetoi que representa un suceso a futuro
+//puede ser resuelta op rechazada
+
+//pending => estado inicial de la promesa
+
+//fullfilled => la promesa se ejecuta
+
+//rejected => la promesa falla
+
+    const falsaPromesa = ()=>{
+        return new Promise((resolve, reject)=>{
+            //resolve => la parte que se ejecuta si la promesa se cumple
+            // reject => cuando la promesa n ose cumple
+        })
+    }
+
+    console.log(falsaPromesa());
+
+    class Usuario{
+        constructor(user, password) {
+            this.user = user;
+            this.password = password;
+        }
+    }
+
+    const usuario1 = new Usuario("santino", 1234)
+    const usuario2 = new Usuario("marcos", 4321)
+    const admin = new Usuario("admin", 49585)
+
+    const usuarios = [usuario1, usuario2, admin]
+
+    const solicitarUsuarios = (estado) =>{
+        return new Promise((resultado, rechazado)=>{
+            if(estado ==true){
+                resultado(usuarios);
+            } else{
+                rechazado("gracias vuelva pronto");
+            }
+        })
+    }
+
+    console.log(solicitarUsuarios(false));
